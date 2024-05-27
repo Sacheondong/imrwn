@@ -363,15 +363,17 @@ span{
 				let regYear = regDate.getFullYear();
 				let regMonth = regDate.getMonth()+1;
 				let regDay = regDate.getDate();
-				let regHour = regDate.getHours();
-				let regMin = regDate.getMinutes();
+				let regHour = String(regDate.getHours()).padStart(2, "0");
+				let regMin = String(regDate.getMinutes()).padStart(2, "0");
 				
-				let regDateStr = regYear+"-"+(("00"+regMonth.toString()).slice(-2))+"-"+(("00"+regDay.toString()).slice(-2));
+				let regDateStr = regYear +"-"+(("00"+regMonth.toString()).slice(-2))+"-"+(("00"+regDay.toString()).slice(-2));
 				let regHourStr = regHour+":"+regMin;
 				
 				if(regDateStr === todayStr) {
 					tmp +='<span class="reg_date cSpan">  '+ regHourStr +' </span>';
 				} else {
+					regDateStr = String(regYear).slice(-2) +"-"+(("00"+regMonth.toString()).slice(-2))+"-"+(("00"+regDay.toString()).slice(-2));
+					
 					tmp +='<span class="reg_date cSpan">  '+ regDateStr +' </span>';
 				} 
 				

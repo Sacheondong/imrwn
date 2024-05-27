@@ -34,7 +34,7 @@
 		select movie.* from movie  , like_m
 		where movie.mno = like_m.mno and like_m.score != 0 and actors like concat('%', #{actors} , '%') and genre like concat('%', #{genre} , '%') 
 		group by like_m.mno
-		having avg(like_m.mno) >= #{score};
+		having avg(like_m.score) >= #{score};
 	</select>
 	<select id="selectLikeList" parameterType="MovSearchCondition" resultType="Movie">
 		
