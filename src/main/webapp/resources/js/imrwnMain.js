@@ -17,7 +17,7 @@
 			let searchWord = $("#keyword").val();
 			let startNum = $('#startNum').val();
 			
-		
+		// 금주의 박스오피스 kobis api 이용하여 가져오기
 			$.ajax({
 			    url : "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json?key=41e994014f2ab1da2608f4c574de71d1&targetDt="+lastweekStr+"&weekGb=0&multiMovieYn=N",  // 요청 URL
 			    type : "get",                  // HTTP 메서드
@@ -37,6 +37,8 @@
 		poster(arr);
 		slides = document.getElementsByClassName("mySlides");
 		showSlides(slideIndex);
+		
+		
  		// 슬라이드 쇼 자동 회전
  		timer = setInterval(AutoshowSlides, 4000);
  	 	// 이미지에 hover시 멈춤
@@ -52,7 +54,7 @@
 		 	  })
 		 	}
 		});
-	
+	// 박스오피스 배열의 값들을 KMDB api에서 검색한 후 db에 저장
 	function poster(arr) {
         for(let i = 0 ; i < arr.length ; i++) {
             $.ajax({
@@ -157,6 +159,8 @@
  	      break;
  	  }
  	}
+ 	
+ 	// 랜덤 영화 추천
  	$("#suggest").click(function(){
  		let actors = $("input[name=actor]").val();
  		let genre = new Array();
