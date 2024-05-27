@@ -39,7 +39,7 @@ public class RegisterController {
 		int res = memberDao.insertMem(m);
 
 		if (res != 1) {
-			attr.addFlashAttribute("msg", "로그인 실패했습니다.");
+			attr.addFlashAttribute("msg", "로그인 실패했습니다123.");
 			return "redirect:/save";
 		}
 
