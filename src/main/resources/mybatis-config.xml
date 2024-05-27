@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias alias="Board"	type="com.imrwn.jh.dto.Board" />
+		<typeAlias alias="SearchCondition"	type="com.imrwn.jh.basic.SearchCondition" />
+		<typeAlias alias="Member"	type="com.imrwn.jh.dto.Member" />
+		<typeAlias alias="Comment_B"	type="com.imrwn.jh.dto.Comment_B" />
+		<typeAlias alias="Like_B"	type="com.imrwn.jh.dto.Like_B" />
+		<typeAlias alias="Like_M"	type="com.imrwn.jh.dto.Like_M" />
+		<typeAlias alias="Movie"	type="com.imrwn.jh.dto.Movie" />
+		<typeAlias alias="Review_M"	type="com.imrwn.jh.dto.Review_M" />
+		<typeAlias alias="MovSearchCondition"	type="com.imrwn.jh.basic.MovSearchCondition" />
+		
+	</typeAliases>
+</configuration>
+

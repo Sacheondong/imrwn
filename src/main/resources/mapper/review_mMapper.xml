@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.imrwn.review_m">
+	<delete id="deleteAll" parameterType="int">
+		delete from review_m where mno = #{mno}
+	</delete>
+	<select id="count" parameterType="int" resultType="int">
+		select count(*) from review_m where mno = #{mno}
+	</select>
+	<delete id="delete" parameterType="map">
+		delete from review_m where rno = #{rno} and reviewer = #{reviewer}
+	</delete>
+	<insert id="insert" parameterType="Review_M">
+		insert into review_m(mno, review, reviewer) values (#{mno}, #{review}, #{reviewer})
+	</insert>
+	<select id="selectAll" parameterType="int" resultType="Review_M">
+		select r.* , m.nickname from review_m r inner join member m where r.reviewer = m.id and r.mno = #{mno}
+	</select>
+	<update id="update" parameterType="Review_M">
+		update review_m set review = #{review}, regDate = now() where rno = #{rno} and reviewer = #{reviewer}
+	</update>
+	<select id="selectInfoRev" parameterType="String" resultType="Review_M">
+		select r.* , m.nickname from review_m r inner join member m where r.reviewer = m.id and r.reviewer = #{reviewer} order by regDate desc limit 10
+	</select>
+	<select id="selectId" parameterType="Map" resultType="Review_M">
+		select * from review_m where reviewer = #{reviewer} and mno = #{mno}
+	</select>
+	<select id="selectInfoId" parameterType="String" resultType="Review_M">
+		select * from Review_m where reviewer = #{reviewer} order by regDate desc limit 10;	
+	</select>	
+</mapper>

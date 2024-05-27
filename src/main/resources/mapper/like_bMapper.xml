@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.imrwn.like_b">
+	<select id="count" parameterType="int" resultType="int">
+		select count(*) from like_b where bno = #{bno}
+	</select>
+	<select id="select" parameterType="map" resultType="Like_B">
+		select * from like_b where bno = #{bno} and id = #{id}
+	</select>
+	<insert id="insert" parameterType="Like_B">
+		insert into like_b(id, bno) values (#{id}, #{bno})
+	</insert>
+	<delete id="delete" parameterType="map">
+		delete from like_b where bno = #{bno} and id = #{id}
+	</delete>
+</mapper>

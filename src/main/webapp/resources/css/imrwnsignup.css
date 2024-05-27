@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    background-color: #111;
+    color: white;
+    font-family: 'LINESeedKR';
+	
+}
+
+@font-face {
+    font-family: 'LINESeedKR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body, html{
+    width: 100vw;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items : center;
+}
+form {
+    border: 3px solid #f1f1f1;
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 400px 380px;
+    grid-template-rows: 200px 380px;
+    grid-template-areas: "img img"
+                         "info butt";
+}
+.imgcontainer {
+    text-align: center;
+    margin: 0px 0 12px 0;
+    grid-area: img;
+  }
+
+.container {
+    padding: 16px;
+    padding-top: 0px;
+   
+  }
+#info {
+    display: block;
+    flex-direction: column;
+    width: 400px;
+    grid-area: info;
+}
+#info > label {
+    padding: 10px 40px 10px 50px;
+}
+#info > input {
+    width: 300px;
+}
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+#buttons {
+    grid-area: butt;
+	padding-top: 30px;
+}
+
+#idCheck {
+    background-color: aliceblue;
+    color: black;
+    width: 70px;
+    height: 38px;
+    padding: 0px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    
+    border-radius: 5px;
+}
+#signup {
+    background-color: rgb(229,9,20);
+    width: 85%;
+    height: 100px;
+    margin-left: 36px;
+    margin-top: 45px;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    
+    border-radius: 5px;
+}
+  /* Add a hover effect for buttons */
+  button:hover {
+    opacity: 0.8;
+  }
+
+  p {
+    padding: 10px;
+    padding-left: 20px;
+  }
+  
+#sns img {
+    padding: 10px 10px 0 20px;
+}
+
+.he:hover {
+    opacity: 0.7;
+}
+#idBox {
+  float: right;
+  font-size: 0.7em;
+  width: 250px;
+  margin-top: 6px;
+}
+#pwBox {
+  float: right;
+  font-size: 0.7em;
+  width: 250px;
+  margin-top: 6px;
+}
+
+#doubleCk {
+  float: right;
+  font-size: 0.7em;
+  width: 225px;
+  margin-top: 6px;
+}
+#emailBox {
+  float: right;
+  font-size: 0.7em;
+  width: 250px;
+  margin-top: 6px;
+}

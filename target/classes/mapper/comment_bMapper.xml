@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.imrwn.comment_b">
+	<delete id="deleteAll" parameterType="int">
+		delete from comment_b where bno = #{bno}
+	</delete>
+	<select id="count" parameterType="int" resultType="int">
+		select count(*) from comment_b where bno = #{bno} 
+	</select>
+	<delete id="delete" parameterType="map">
+		delete from comment_b where cno = #{cno} and commenter = #{commenter}
+	</delete>
+	<insert id="insert" parameterType="Comment_B">
+		insert into comment_b(bno, comment, commenter) values (#{bno}, #{comment}, #{commenter})
+	</insert>
+	<select id="selectAll" parameterType="int" resultType="Comment_B">
+		select b.cno, b.bno, b.comment, b.commenter, b.regDate , m.nickname from comment_b b inner join member m where b.commenter = m.id and b.bno = #{bno} order by cno asc
+	</select>
+	<update id="update" parameterType="Comment_B">
+		update comment_b set comment= #{comment}, regDate = now() where cno = #{cno} and commenter= #{commenter}
+	</update>
+	<select id="selectInfoId" parameterType="String" resultType="Comment_B">
+		select b.* , m.nickname from comment_b b inner join member m where b.commenter = m.id and b.commenter = #{commenter} order by regDate desc limit 10
+	</select>
+	
+</mapper>

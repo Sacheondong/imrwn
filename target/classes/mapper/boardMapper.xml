@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 게시판 분류 작업 꼭 하기 -->
+<mapper namespace="com.imrwn.board">
+	<sql id="selectFromBoard">
+		select bno, title, content, writer, viewCnt, commentCnt,
+		likeCnt, postDate, movieType, fileName, member.nickName from board, member
+	</sql>
+	<sql id="searchCondition">
+		<choose>
+			<when test='option=="T"'>
+				and title like concat('%', #{keyword}, '%')
+			</when>
+			<when test='option=="W"'>
+				and member.nickName like concat('%', #{keyword}, '%')
+			</when>
+			<when test='option=="C"'>
+				and content like concat('%', #{keyword}, '%')
+			</when>
+			<otherwise>
+				and (title like concat('%', #{keyword}, '%')
+				or content
+				like concat('%', #{keyword}, '%'))
+			</otherwise>
+		</choose>
+	</sql>
+	<select id="searchSelectPage" parameterType="SearchCondition" resultType="Board">
+		<include refid="selectFromBoard" />
+		where true and board.writer = member.id and movieType = #{movieType}
+		<include refid="searchCondition" />
+		order by bno desc, postDate
+		limit #{offset}, #{pageSize}
+	</select>
+	<select id="searchResultCnt" parameterType="SearchCondition" resultType="int">
+		select count(*) from board, member
+		where true and board.writer = member.id and movieType = #{movieType}
+		<include refid="searchCondition" />
+	</select>
+
+	<select id="count" resultType="int">
+		select count(*) from board
+	</select>
+	<select id="selectAll" resultType="Board">
+		select board.*, member.nickName from board, member where board.writer = member.id order by bno desc,
+		postDate desc
+	</select>
+	<select id="selectComment" resultType="Board">
+		select * from board order by commentCnt desc limit 10;
+	</select>
+	<select id="selectLike" resultType="Board">
+		select * from board order by likeCnt desc limit 10;
+	</select>		
+	<select id="select" resultType="Board" parameterType="int">
+		select board.*, member.nickName from board, member where board.writer = member.id and bno = #{bno}
+	</select>
+	<delete id="deleteAll">
+		delete from board
+	</delete>
+	<delete id="delete" parameterType="map">
+		delete from board where bno =
+		#{bno} and writer = #{writer}
+	</delete>
+	<insert id="insert" parameterType="Board">
+		insert into board(title,
+		content, writer, movieType, fileName) values (#{title}, #{content}, #{writer}, #{movieType}, #{fileName})
+	</insert>
+	<update id="update" parameterType="Board">
+		update board set title =
+		#{title} , content = #{content}, fileName = #{fileName}
+		where bno = #{bno} and
+		writer = #{writer}
+	</update>
+	<update id="updateViewCnt" parameterType="int">
+		update board set
+		viewCnt = (viewCnt + 1) where bno = #{bno}
+	</update>
+	<update id="updateCommentCnt" parameterType="map">
+		update board set
+		commentCnt = (commentCnt + #{commentCnt}) where bno = #{bno}
+	</update>
+	<update id="updateLikeCnt" parameterType="map">
+		update board set
+		likeCnt = (likeCnt + #{likeCnt}) where bno = #{bno}
+	</update>
+	<select id="selectInfoId" parameterType="String" resultType="Board">
+		select b.* , m.nickname from board b inner join member m where b.writer = m.id and b.writer = #{writer} order by postDate desc limit 10
+	</select>
+</mapper>
+

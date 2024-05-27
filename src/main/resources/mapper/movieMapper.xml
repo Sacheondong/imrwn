@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.imrwn.movie">
+	<select id="selectTitleDire" parameterType="map" resultType="Movie">
+		select mno, replace(title, '@' , '\"') as title, replace(titleEng, '@' , '\"') as titleEng, directors, actors, genre, runtime, posters, replace(plots, '@' , '\"') as plots, repRlsDate from movie where title= #{title} and directors like concat('%', #{directors}, '%'	)
+		
+	</select>
+	<insert id="insert" parameterType="Movie">
+		insert into movie(title, titleEng, directors, actors, genre, runtime, posters, plots, repRlsDate ) values(#{title}, #{titleEng}, #{directors}, #{actors}, #{genre}, #{runtime}, #{posters}, #{plots}, #{repRlsDate})
+	</insert>
+	<update id="updatemovieLikeCnt" parameterType="map">
+		update movie set movieLikeCnt = (movieLikeCnt + #{movieLikeCnt}) where mno = #{mno}
+	</update>
+	<update id="updatemovieReviewCnt" parameterType="map">
+		update movie set movieReviewCnt = (movieReviewCnt + #{movieReviewCnt}) where mno = #{mno}
+	</update>
+	<select id="selectSearch" parameterType="MovSearchCondition" resultType="Movie">
+		select mno, replace(title, '@' , '\"') as title, replace(titleEng, '@' , '\"') as titleEng, directors, actors, genre, runtime, posters, replace(plots, '@' , '\"') as plots, repRlsDate 
+		from movie where title like concat('%', #{searchWord}, '%'	) or directors like concat('%', #{searchWord}, '%') or actors like concat('%', #{searchWord}, '%') or plots like concat('%', #{searchWord}, '%') 
+		order by repRlsDate desc
+		limit #{offset},#{pageSize}
+	</select>
+	<select id="selectSearchCnt" parameterType="MovSearchCondition" resultType="int">
+		select count(*) 
+		from movie where title like concat('%', #{searchWord}, '%'	) or directors like concat('%', #{searchWord}, '%') or actors like concat('%', #{searchWord}, '%') or plots like concat('%', #{searchWord}, '%') 
+		order by repRlsDate desc
+	</select>	
+	<select id="selectMno" parameterType="int" resultType="Movie">
+		select mno, replace(title, '@' , '\"') as title, replace(titleEng, '@' , '\"') as titleEng, directors, actors, genre, runtime, posters, replace(plots, '@' , '\"') as plots, repRlsDate from movie movie where mno = #{mno}
+	</select>
+	<select id="selectRandom" parameterType="map" resultType="Movie">
+		select movie.* from movie  , like_m
+		where movie.mno = like_m.mno and like_m.score != 0 and actors like concat('%', #{actors} , '%') and genre like concat('%', #{genre} , '%') 
+		group by like_m.mno
+		having avg(like_m.mno) >= #{score};
+	</select>
+	<select id="selectLikeList" parameterType="MovSearchCondition" resultType="Movie">
+		
+		select movie.mno, replace(movie.title, '@' , '\"') as title, replace(movie.titleEng, '@' , '\"') as titleEng, movie.directors, movie.actors, movie.genre, movie.runtime, movie.posters, replace(movie.plots, '@' , '\"') as plots, movie.repRlsDate 
+		from movie inner join like_m on movie.mno = like_m.mno where like_m.good = 1 and like_m.id = #{searchWord} 
+		order by repRlsDate desc 
+		limit #{offset},#{pageSize}
+	</select>
+	<select id="selectLikeCnt" parameterType="MovSearchCondition" resultType="int">
+		select count(*) 
+		from movie inner join like_m on movie.mno = like_m.mno where like_m.good = 1 and like_m.id = #{searchWord} 
+		order by repRlsDate desc; 
+	</select>
+</mapper> 

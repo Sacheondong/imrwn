@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.imrwn.member">
+	<select id="selectId" parameterType="String" resultType="Member">
+		select * from member where id = #{id}
+	</select>
+	<select id="selectAll" resultType="Member">
+		select * from member
+	</select>
+	<insert id="insertMem" parameterType="Member">
+		insert into member(id, pwd, email, nickName) values(#{id}, #{pwd}, #{email}, #{nickName})
+	</insert>
+	<update id="updateMem" parameterType="Member">
+		update member set pwd = #{pwd},	nickName = #{nickName} where id = #{id}
+	</update>
+	<update id="updateNick" parameterType="Member">
+		update member set nickName = #{nickName} where id = #{id}
+	</update>
+	<delete id="deleteId" parameterType="String">
+		delete from member where id = #{id}
+	</delete>
+	<delete id="deleteAll">
+		delete from member
+	</delete>
+	<update id="updateMovieCnt" parameterType="map">
+		update member set movieCnt = (movieCnt + #{movieCnt}) where id = #{id}
+	</update>
+	<update id="updateMovielikeCnt" parameterType="map">
+		update member set movielikeCnt = (movielikeCnt + #{movielikeCnt}) where id = #{id}
+	</update>	
+	<update id="updateMovieScoreCnt" parameterType="map">
+		update member set movielikeCnt = (movieScoreCnt + #{movieScoreCnt}) where id = #{id}
+	</update>	
+</mapper>

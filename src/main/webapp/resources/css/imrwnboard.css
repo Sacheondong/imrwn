@@ -1,0 +1,124 @@
+	h2{
+		padding-left: 200px;
+		padding-top: 20px;
+		padding-bottom: 60px;
+		font-size: 2.4em;
+	}
+	table{
+		margin:0 auto;
+		border-collapse: collapse;
+		position:relative;
+		border-top: 4px solid #777;
+		border-bottom: 4px solid #777;
+	}
+	th {
+		padding: 10px;
+	}
+	tr td {
+		padding: 8px;
+	}
+	td {
+		border-top: 1px solid #818181;
+	}
+	form{
+		text-align: center;
+	}
+	.btn{
+		text-align: right;
+	}
+
+	#writeBtn {
+    color: black;
+    padding: 10px;
+
+        background-color: #ddd;
+        border: none;
+        color: black;
+        padding: 8px 16px;
+        text-align: center;
+        font-size: 14px;
+        margin: 4px 2px;
+        transition: 0.3s;
+        border-radius: 8px;
+        margin-top: 10px;
+        margin-right: 10px;
+	}
+	#writeBtn:hover {
+    background-color: rgb(229,9,20);
+    color: white;
+  }
+	
+	tr td a{
+		color:white;
+	}
+	a{
+		color:white;
+		text-decoration: none;
+	}
+	.navpl{
+		text-align:center;
+	}
+	.check{
+		color: rgb(229,9,20);
+	}
+	#comCnt {
+		color:rgb(229,9,20);
+	}
+	.board-no {
+		width: 100px;
+		text-align: center;
+	}
+	.board-title {
+		width: 700px;
+		padding-left: 10px;
+	}
+	.board-id {
+		width: 100px;
+		text-align: center;
+	}
+	.board-like {
+		width: 100px;
+		text-align: center;
+	}
+	.board-viewCnt {
+		width: 100px;
+		text-align: center;
+	}
+	.board-regDate {
+		width: 150px;
+		text-align: center;
+	}
+	
+	#movieCon{
+		width : 1300px;
+		margin: 0 auto;
+	}
+	#movieWirteBtn{
+		width:100%;
+	}
+	#searchBtn {
+	    color: black;
+	    padding: 10px;
+
+        background-color: #ddd;
+        border: none;
+        color: black;
+        padding: 8px 16px;
+        text-align: center;
+        font-size: 14px;
+
+        transition: 0.3s;
+        border-radius: 8px;
+
+	}
+	#searchBtn:hover {
+	    background-color: rgb(229,9,20);
+	    color: white;
+   }
+   .searchF {
+   		height: 34px;
+   		border-radius: 8px;
+   		font-size: 14px;
+   		box-shadow: none;
+   		outline: none;
+   }
