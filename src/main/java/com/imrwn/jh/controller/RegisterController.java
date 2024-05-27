@@ -39,7 +39,7 @@ public class RegisterController {
 		int res = memberDao.insertMem(m);
 
 		if (res != 1) {
-			attr.addFlashAttribute("msg", "·Î±×ÀÎ ½ÇÆĞÇß½À´Ï´Ù.");
+			attr.addFlashAttribute("msg", "ë¡œê·¸ì¸ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤123.");
 			return "redirect:/save";
 		}
 
@@ -48,9 +48,9 @@ public class RegisterController {
 
 	private String makeNick() {
 		// TODO Auto-generated method stub
-		String[] adjective = {"Çàº¹ÇÑ", "½½ÇÂ", "°ÔÀ¸¸¥", "½½±â·Î¿î", "¼öÁİÀº", "±×¸®¿î", "´õ·¯¿î", "¼½½ÃÇÑ", "¹è°íÇÂ", "¹èºÎ¸¥",
-				"ºÎÀÚ", "Àç¹ú", "¿ô°íÀÖ´Â", "±ú¹ß¶öÇÑ"};
-		String[] animals = {"È£¶ûÀÌ", "ºñ¹ö", "°­¾ÆÁö", "ºÎ¾ûÀÌ", "¿©¿ì", "Ä¡Å¸", "¹®¾î", "°í¾çÀÌ", "¹Ì¾îÄ¹", "´Ù¶÷Áã"};
+		String[] adjective = {"í–‰ë³µí•œ", "ìŠ¬í”ˆ", "ê²Œìœ¼ë¥¸", "ìŠ¬ê¸°ë¡œìš´", "ìˆ˜ì¤ì€", "ê·¸ë¦¬ìš´", "ë”ëŸ¬ìš´", "ì„¹ì‹œí•œ", "ë°°ê³ í”ˆ", "ë°°ë¶€ë¥¸",
+				"ë¶€ì", "ì¬ë²Œ", "ì›ƒê³ ìˆëŠ”", "ê¹¨ë°œë„í•œ"};
+		String[] animals = {"í˜¸ë‘ì´", "ë¹„ë²„", "ê°•ì•„ì§€", "ë¶€ì—‰ì´", "ì—¬ìš°", "ì¹˜íƒ€", "ë¬¸ì–´", "ê³ ì–‘ì´", "ë¯¸ì–´ìº£", "ë‹¤ëŒì¥"};
 		int tmp = (int) (Math.random()*adjective.length);
 		String adj = adjective[tmp];
 		System.out.println(tmp);
