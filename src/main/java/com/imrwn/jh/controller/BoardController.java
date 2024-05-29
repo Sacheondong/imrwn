@@ -218,7 +218,7 @@ public class BoardController {
 			if(res == 1) {
 				redatt.addFlashAttribute("msg","del");
 				
-				return "redirect:/board/"+movieType+sc.getQueryString();
+				return "redirect:/board/"+movieType + "?page=1";
 			}else {
 				throw new Exception("board remove error");
 			}
@@ -227,7 +227,7 @@ public class BoardController {
 			e.printStackTrace();
 			redatt.addFlashAttribute("msg", "error");
 		}
-		return "redirect:/board/"+movieType+sc.getQueryString();
+		return "redirect:/board/"+movieType + "?page=1";
 	}
 	@GetMapping("/write")
 	public String write() {

@@ -103,6 +103,9 @@
 	    height: 50px;
 
 	}
+	.hrs {
+		border: 1px solid #818181;
+	}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -182,7 +185,7 @@
 						<ul class="uls">
 						<c:forEach var="rList" items="${rList }">
 							<li class="lis"><a href="<c:url value="/movie/view?mno=${rList.mno }" />">${rList.review }</a></li>
-						
+							<hr class="hrs">
 						</c:forEach>
 						</ul>
 					</div>
@@ -194,7 +197,7 @@
 						<ul class="uls">
 						<c:forEach var="bList" items="${bList }">
 							<li class="lis"><a href="<c:url value="/board/read?bno=${bList.bno }" />">${bList.title }</a></li>
-						
+							<hr class="hrs">
 						</c:forEach>
 						</ul>
 					</div>
@@ -205,8 +208,8 @@
 					<div id="myComment">
 						<ul class="uls">
 						<c:forEach var="cList" items="${cList }">
-							<li class="lis"><a href="<c:url value="/board/read?mno=${cList.bno }" />">${cList.comment }</a></li>
-						
+							<li class="lis"><a href="<c:url value="/board/read?bno=${cList.bno }" />">${cList.comment }</a></li>
+							<hr class="hrs">
 						</c:forEach>
 						</ul>
 					</div>

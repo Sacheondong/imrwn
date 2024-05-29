@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>IMRWN</title>
 <link rel="stylesheet" href="/jh/css/imrwn.css">
 <style>
 	input{
