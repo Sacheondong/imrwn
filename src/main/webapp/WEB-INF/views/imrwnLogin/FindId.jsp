@@ -66,9 +66,13 @@
 		            url: '${pageContext.request.contextPath}/findid/',  // 요청 URI
 		            data : {id : id, email : email},
 		            success : function(result){
-		            	uuid = result;
-		            		$("#find").html(toHtml(result));	
-
+			            	if(result === "err") {
+			            		alert("아이디를 확인해 주세요");
+			            		
+			            	}else {
+					            	uuid = result;
+					            		$("#find").html(toHtml(result));	
+					         }
 						 },
 		            error: function(request, status, error){ alert("이메일을 확인해주세요"); } // 에러가 발생했을 때, 호출될 함수
 		        }); // $.ajax()

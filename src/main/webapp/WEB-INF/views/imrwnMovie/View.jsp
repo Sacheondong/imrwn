@@ -65,7 +65,15 @@
 						
 						<div class="plot"> ${m.plots }</div>
 					</div>
- 					<img class="poster" alt="" src="${m.posters }">
+					<c:choose>
+						<c:when test="${empty m.posters }">
+							<img alt="" src="/jh/img/포스터 준비.png">
+						</c:when>
+						<c:otherwise>
+							<img class="poster" alt="" src="${m.posters }">
+						</c:otherwise>
+					</c:choose>
+ 					
 				</div>			
 		<%@ include file="./Like.jsp" %>
 		<%@ include file="./Comment.jsp" %>

@@ -1,5 +1,6 @@
 package com.imrwn.jh.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,18 +34,23 @@ public class FindIdController {
 
 	@PostMapping("/findid")
 	@ResponseBody
-	public ResponseEntity<String> sendEmail(String id, String email) throws Exception {
-
-		String uuid = UUID.randomUUID().toString().substring(0, 8);
+	public ResponseEntity<String> sendEmail(String id, String email, RedirectAttributes redatt) throws Exception {
 		
-		String addr = "imrwncs1@gmail.com";
-		String subject = "IMRWN 인증키";
-		String body = uuid + " 입니다";
-
-		mailService.sendEmail(email, addr, subject, body);
-
-
-		return new ResponseEntity<String>(uuid, HttpStatus.OK);
+		Member m = memberService.getSelectId(id);
+		if(m.getEmail().equals(email)) {
+			
+			
+			String uuid = UUID.randomUUID().toString().substring(0, 8);
+			
+			String addr = "imrwncs1@gmail.com";
+			String subject = "IMRWN 인증키";
+			String body = uuid + " 입니다";
+	
+			mailService.sendEmail(email, addr, subject, body);
+			
+	
+			return new ResponseEntity<String>(uuid, HttpStatus.OK);
+		}else return  new ResponseEntity<String>("err", HttpStatus.OK);
 	}
 
 	@PostMapping("/change")

@@ -116,6 +116,7 @@ public class MovieController {
 		try {
 			try {
 				m = movieService.getSelectMovie(movies.get(0).getTitle(), movies.get(0).getDirectors());
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

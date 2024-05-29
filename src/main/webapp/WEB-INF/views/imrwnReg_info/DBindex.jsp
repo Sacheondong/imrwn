@@ -137,7 +137,7 @@
 		function deletef(elm){
 			let id = elm.getAttribute("data-id");
 			if (confirm("삭제하시겠습니까?")){
-				location.href='./IdDelete?id='+ id;
+				location.href='./iddelete?id='+id;
 						
 			}else {
 				alert("취소되었습니다.");

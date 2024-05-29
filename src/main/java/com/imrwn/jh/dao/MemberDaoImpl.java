@@ -45,7 +45,7 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public int deleteId(String id) throws Exception {
-		return session.delete(namespace + "deleteMember", id);
+		return session.delete(namespace + "deleteId", id);
 	}
 
 	@Override

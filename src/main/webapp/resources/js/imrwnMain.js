@@ -35,6 +35,8 @@
 			    error : function(request, status, error) { console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error) } // 에러가 발생했을 때, 호출될 함수
 			});	              
 		poster(arr);
+		
+		
 		slides = document.getElementsByClassName("mySlides");
 		showSlides(slideIndex);
 		
@@ -54,6 +56,7 @@
 		 	  })
 		 	}
 		});
+		
 	// 박스오피스 배열의 값들을 KMDB api에서 검색한 후 db에 저장
 	function poster(arr) {
         for(let i = 0 ; i < arr.length ; i++) {
@@ -80,11 +83,11 @@
                     async : false,
                     success: function(result){  // 요청 성공 시 호출할 메서드 설정
 						result = JSON.parse(result);
-						let poster = "";
-						if(result.posters != null || result.posters != "" ) {
+						let poster = [];
+						if(result.posters !== "" ) {
 							poster = result.posters.split("|");
 						} else {
-							poster = "/jh/img/포스터 준비.png";
+							poster[0] = `/jh/img/포스터준비.png`;
 						}	 
 							let show = document.getElementsByClassName("slideshow-container")[0];
 							show.insertAdjacentHTML('beforeend', '<div class="mySlides fade"><div class="numbertext">'+ (i+1) + '/ 20</div><a href="/jh/movie/view?mno='+ result.mno +'" id="image1"><img src='+ poster[0] +'></a> </div>');

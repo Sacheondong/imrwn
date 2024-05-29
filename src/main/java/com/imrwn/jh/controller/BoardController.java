@@ -294,7 +294,6 @@ public class BoardController {
 	}
 	@GetMapping("/modify")
 	public String update(Integer bno, Model model, HttpSession session) {
-		String writer = session.getAttribute("id") + "";
 		
 		try {
 			Board b = boardService.getBoard(bno);
@@ -323,8 +322,6 @@ public class BoardController {
 		//String uploadFolder = "E:\\code\\MyBatisProject2\\src\\main\\webapp\\resources";
 		String uploadFolder = session.getServletContext().getRealPath("/")+"\\resources";
 		System.out.println("업로드 폴더 : " + uploadFolder);
-		
-		String str = "";
 		
 		//기존의 파일 이름 정보 가져오기
 		Board oldB = null;

@@ -34,7 +34,6 @@ public class RegisterController {
 		String pwd = passwordEncoder.encode(m.getPwd());
 		m.setPwd(pwd);
 		String nickName = makeNick();
-		System.out.println("nickName = " + nickName);
 		m.setNickName(nickName);
 		int res = memberDao.insertMem(m);
 
@@ -53,9 +52,7 @@ public class RegisterController {
 		String[] animals = {"호랑이", "비버", "강아지", "부엉이", "여우", "치타", "문어", "고양이", "미어캣", "다람쥐"};
 		int tmp = (int) (Math.random()*adjective.length);
 		String adj = adjective[tmp];
-		System.out.println(tmp);
 		tmp = (int)( Math.random()*animals.length);
-		System.out.println(tmp);
 		String animal = animals[tmp];
 
 		return adj + " " + animal;
@@ -64,7 +61,6 @@ public class RegisterController {
 	@PostMapping("/idCheck")
 	@ResponseBody
 	public int idCheck(String text) throws Exception {
-		System.out.println(text);
 		Member m = memberDao.selectId(text);
 		if (m == null) {
 			return 0;

@@ -149,7 +149,7 @@
 	        		</tr>
 	        		<tr>
 		        		<td><label for="nickName">닉네임  </label></td>
-		        		<td><input name="nickName" value="${m.nickName }"></td>
+		        		<td><input name="nickName" id="nickName" value="${m.nickName }"></td>
 	        		</tr>
 	        		<tr>
 		        		<td><label for="pwd">비밀번호 </label></td> 
@@ -242,8 +242,16 @@
 	//ID 비밀번호 Email 양식 체크
 
 		function updateCk(){
+		let nickName = document.getElementById("nickName").value;
 	    let user_pw = document.getElementById("user_pw").value;
 	    let user_pwck = document.getElementById("user_pwck").value;
+	    
+	    if(nickName.trim() === ""){
+	    	alert("닉네임은 공백일 수 없습니다.");
+	    	
+	    	return
+	    }
+	    
 	    if(user_pw != "" && user_pw != null && user_pw != "null"){
 		    if (!pwCheck(user_pw)){
 		        
